@@ -1,5 +1,4 @@
 from db import db_connection()
-
 def create_user(name:str, email:str):
     with get_db_con() as db_connection:
         with db_connection.cursor() as cursor:
@@ -12,7 +11,6 @@ def create_user(name:str, email:str):
                 (name, email)
             )
             return (name,email)
-
 
 def get_by_id(id):
     with get_db_con() as db_connection:
@@ -32,7 +30,17 @@ def get_all(id):
             cursor.execute(
                 """
                 SELECT name , email and password  FROM users
-                ORDER BY name
+                ORDER BY id
                 """,
+            )
+            return cursor.fetcall()
+def get_all(id):
+    with get_db_con() as db_connection:
+        with db_connection.cursor() as cursor:
+            cursor.execute(
+                """
+               DELETE FROM USERS WHERE ID =%s
+                """,
+                (id)
             )
             return cursor.fetcall()
