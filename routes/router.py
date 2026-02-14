@@ -1,7 +1,6 @@
 
 from fastapi import FastAPI
 from fastapi import APIRouter
-
 from models.models_ import UserCreate
 import repository.user_respository as repo
 
@@ -15,3 +14,6 @@ def create_user(user:UserCreate):
         "name" :res[1],
         "email":res[3]
     }
+
+
+
